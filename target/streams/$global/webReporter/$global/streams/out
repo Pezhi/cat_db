@@ -1,0 +1,4 @@
+[0m[[31merror[0m] [0mC:\Users\Pazhman\Documents\Projects\Play2\cat_db\app\assets\js\func.js:126: Use '===' to compare with 'null'.[0m
+[0m[[31merror[0m] [0m    return (val === undefined || val == null || val.length <= 0) ? true : false;[0m
+[0m[[31merror[0m] [0m                                     ^[0m
+[0m[[31merror[0m] [0mone error found[0m

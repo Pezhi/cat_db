@@ -1,0 +1,91 @@
+@(message: String)
+
+@main("Cat Database") {
+
+<table>
+    <tr>
+        <td><h2>Cat List</h2></td>
+    </tr>
+    <tr>
+        <td><select id="catListView" size="20" style="width:150px;" onclick="getSelectedCat();"></select></td>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+        <td>
+            <form method="post" action="@routes.Application.add_update_del_Cat()">
+                <table>
+                    <tr>
+                        <td><h3>Cat Details</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Id:</td>
+                        <td><input id="catid" name="catid" type="text" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td><input id="name" name="name" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Color:</td>
+                        <td><input id="color" name="color" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Race:</td>
+                        <td><input id="race" name="race" type="text"></td>
+                    </tr>
+                    <tr>
+                        <td>Picture File:</td>
+                        <td><input id="pic" name="pic" type="text" readonly></td>
+                    </tr>
+                    <tr>
+                        <td>Gender:</td>
+                        <td><select id="gender" name="gender" style="width:140px;">
+                            <option value="m">Male</option>
+                            <option value="f">Female</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button name="submitBtn" value="addCatBtn" onclick="emptyIdField();" style="width:105px;">
+                                Add Cat
+                            </button>
+                        </td>
+
+                        <td>
+                            <button name="submitBtn" value="updateCatBtn" style="width:105px;">Update Cat</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button name="submitBtn" value="deleteCatBtn" style="width:105px;">Delete Cat</button>
+                        </td>
+
+                        <td>
+                            <button name="submitBtn" value="emptyfiledsBtn" onclick="emptyFormFields()" style="width:105px;">Empty Fields</button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </td>
+        <td>
+            <table>
+                <tr>
+                    <td><img id="picImg" name="picImg" src="" width="310" height="200" /></td>
+                </tr>
+                <tr>
+                    <td>
+                        <iframe id="uploadImg" name="uploadImg" width="0" height="0" frameborder="0" scrolling="yes" onload="populateForm();"></iframe>
+                        <form enctype="multipart/form-data" method="post" action="@routes.Application.upload()" target="uploadImg">
+                            <input type="file" name="picture">
+                            <input type="submit" value="Upload">
+                        </form>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+<script src='@routes.Assets.versioned("js/func.js")' type="text/javascript"></script>
+
+}
+
