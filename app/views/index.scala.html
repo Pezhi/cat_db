@@ -44,18 +44,18 @@
                     </tr>
                     <tr>
                         <td>
-                            <button name="submitBtn" value="addCatBtn" onclick="emptyIdField();" style="width:105px;">
+                            <button name="submitBtn" value="addCatBtn" onclick="emptyIdField(); return requiredFieldCheck();" style="width:105px;">
                                 Add Cat
                             </button>
                         </td>
 
                         <td>
-                            <button name="submitBtn" value="updateCatBtn" style="width:105px;">Update Cat</button>
+                            <button name="submitBtn" value="updateCatBtn" onclick="return selectionCheck(false);" style="width:105px;">Update Cat</button>
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            <button name="submitBtn" value="deleteCatBtn" style="width:105px;">Delete Cat</button>
+                            <button name="submitBtn" value="deleteCatBtn" onclick="return selectionCheck(true);" style="width:105px;">Delete Cat</button>
                         </td>
 
                         <td>

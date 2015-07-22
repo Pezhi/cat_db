@@ -57,11 +57,11 @@ class Application extends Controller {
 
   def updateCat(cat: Cat) = {
     if (cat.catid.isEmpty) {
-      Dialog.showMessage(null, "Please select a cat from the first!", "Error", Dialog.Message.Error)
+      //Dialog.showMessage(null, "Please select a cat from the first!", "Error", Dialog.Message.Error)
     } else {
       val catVal = DB.query[Cat].whereEqual("id", cat.catid.toLong).fetchOne()
       if (catVal.isEmpty) {
-        Dialog.showMessage(null, "No record found in the database by selected cat id.", "Error", Dialog.Message.Error)
+        //Dialog.showMessage(null, "No record found in the database by selected cat id.", "Error", Dialog.Message.Error)
       } else {
         DB.query[Cat].whereEqual("id", cat.catid.toLong).fetchOne()
           .map(a => a.copy(catid = String.valueOf(a.id)))
@@ -85,10 +85,10 @@ class Application extends Controller {
       .fetch()
 
     if (cat.name.trim.length < 1) {
-      Dialog.showMessage(null, "Please enter a cat name!", "Error", Dialog.Message.Error)
+      //Dialog.showMessage(null, "Please enter a cat name!", "Error", Dialog.Message.Error)
     }
     else if (!cats.isEmpty && cats.length > 0) {
-      Dialog.showMessage(null, "A record with exactly same details already exists in database!", "Error", Dialog.Message.Error)
+      //Dialog.showMessage(null, "A record with exactly same details already exists in database!", "Error", Dialog.Message.Error)
     }
     else {
       DB.save(cat)
@@ -97,16 +97,16 @@ class Application extends Controller {
 
   def delCat(cat: Cat) = {
     if (cat.catid.isEmpty) {
-      Dialog.showMessage(null, "Please select a cat from the first!", "Error", Dialog.Message.Error)
+      //Dialog.showMessage(null, "Please select a cat from the first!", "Error", Dialog.Message.Error)
     } else {
       val catVal = DB.query[Cat].whereEqual("id", cat.catid.toLong).fetchOne()
       if (catVal.isEmpty) {
-        Dialog.showMessage(null, "No record found in the database by selected cat id.", "Error", Dialog.Message.Error)
+        //Dialog.showMessage(null, "No record found in the database by selected cat id.", "Error", Dialog.Message.Error)
       } else {
-        val result = Dialog.showConfirmation(null, "Are you sure you want to delete this cat?", "Confirmation", Options.YesNo, Dialog.Message.Question)
-        if (result == Dialog.Result.Yes) {
+        /*val result = Dialog.showConfirmation(null, "Are you sure you want to delete this cat?", "Confirmation", Options.YesNo, Dialog.Message.Question)
+        if (result == Dialog.Result.Yes) {*/
           DB.delete(catVal.last)
-        }
+        //}
       }
     }
   }

@@ -100,4 +100,34 @@ function emptyFormFields()
 
 }
 
+function selectionCheck(showDelConfirmation)
+{
+    var ul = document.getElementById("catListView");
+    if (ul.selectedIndex < 0){
+        alert("Please select a cat from the first!");
+        return false;
+    }
+    if(showDelConfirmation){
+        var res = confirm("Are you sure you want to delete this cat?");
+        if(res === false){
+            return false;
+        }
+    }
+}
+
+function requiredFieldCheck()
+{
+    var name = document.getElementById("name");
+    if (isNullorEmpty(name.value.trim())){
+        alert("Please enter a cat name!");
+
+        return false;
+    }
+}
+
+function isNullorEmpty(value)
+{
+    return value === undefined || value === null || value === '';
+}
+
 
